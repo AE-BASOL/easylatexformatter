@@ -8,7 +8,7 @@
 
 | Phase | Name | Goal | Requirements |
 |-------|------|------|--------------|
-| 1 | Paste-Format-Copy Shell | Complete: 3/3 plans executed on 2026-06-24. Delivered the first usable one-page workflow with placeholder deterministic formatting. | INPT-01, INPT-02, INPT-03, FORM-01, OUTP-01, OUTP-02, OUTP-03 |
+| 1 | Paste-Format-Copy Shell | Complete: 3/3 plans executed and verified on 2026-06-24. Delivered the first usable one-page workflow with placeholder deterministic formatting. | INPT-01, INPT-02, INPT-03, FORM-01, OUTP-01, OUTP-02, OUTP-03 |
 | 2 | Deterministic Formatter Core | Implement safe LaTeX source formatting rules for common structures. | FORM-02, FORM-03 |
 | 3 | Options and Diagnostics | Add basic formatter options, change status, and useful failure feedback. | FORM-04, FORM-05, OUTP-04 |
 | 4 | Formatter Quality Harness | Lock behavior with fixtures and keep engine code swappable. | QUAL-01, QUAL-03 |

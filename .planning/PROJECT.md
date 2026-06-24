@@ -14,15 +14,17 @@ User can paste LaTeX source, click format, and copy a cleaner version in one qui
 
 ### Validated
 
-(None yet - ship to validate)
+- ✓ User can paste LaTeX source into a single-page interface — Phase 1
+- ✓ User can run a basic deterministic formatter from the interface — Phase 1
+- ✓ User can inspect formatted output before copying it — Phase 1
+- ✓ User can copy or download the formatted result — Phase 1
 
 ### Active
 
-- [ ] User can paste LaTeX source into a single-page interface.
-- [ ] User can format source with a deterministic local formatter.
-- [ ] User can inspect the formatted output before copying it.
-- [ ] User can copy or download the formatted result.
+- [ ] User can format source with stronger deterministic LaTeX rules.
 - [ ] User receives clear feedback when input cannot be formatted safely.
+- [ ] User can configure basic formatting options.
+- [ ] Formatter behavior is protected by fixture tests.
 
 ### Out of Scope
 
@@ -60,8 +62,8 @@ User can paste LaTeX source, click format, and copy a cleaner version in one qui
 | Decision | Rationale | Outcome |
 |----------|-----------|---------|
 | Build LaTeX source formatter, not prose-to-LaTeX converter | User chose source formatting as v1 scope | - Pending |
-| Use paste-format-copy UI for v1 | Fastest path to the requested workflow | - Pending |
-| Use deterministic local formatting | User wants reliable formatting without AI uncertainty | - Pending |
+| Use paste-format-copy UI for v1 | Fastest path to the requested workflow | ✓ Good |
+| Use deterministic local formatting | User wants reliable formatting without AI uncertainty | — Pending |
 | Keep AI assistance out of v1 | Avoid cost, latency, semantic drift, and privacy concerns | - Pending |
 
 ## Evolution
@@ -82,4 +84,4 @@ This document evolves at phase transitions and milestone boundaries.
 4. Update Context with current state
 
 ---
-*Last updated: 2026-06-24 after initialization*
+*Last updated: 2026-06-24 after Phase 1 completion*
