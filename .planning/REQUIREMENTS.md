@@ -7,13 +7,13 @@
 
 ### Input
 
-- [ ] **INPT-01**: User can paste or type LaTeX source into a large input area.
-- [ ] **INPT-02**: User can clear the input without refreshing the page.
-- [ ] **INPT-03**: User can load a sample LaTeX snippet to understand expected usage.
+- [x] **INPT-01**: User can paste or type LaTeX source into a large input area.
+- [x] **INPT-02**: User can clear the input without refreshing the page.
+- [x] **INPT-03**: User can load a sample LaTeX snippet to understand expected usage.
 
 ### Formatting
 
-- [ ] **FORM-01**: User can run formatting with a visible Format command.
+- [x] **FORM-01**: User can run formatting with a visible Format command.
 - [ ] **FORM-02**: Formatter applies deterministic indentation for common LaTeX environments.
 - [ ] **FORM-03**: Formatter preserves comments and protected verbatim-like blocks.
 - [ ] **FORM-04**: User can choose basic formatting options for indentation and wrapping.
@@ -21,9 +21,9 @@
 
 ### Output
 
-- [ ] **OUTP-01**: User can view formatted output with whitespace and line breaks preserved.
-- [ ] **OUTP-02**: User can copy formatted output to the clipboard.
-- [ ] **OUTP-03**: User can download formatted output as a `.tex` file.
+- [x] **OUTP-01**: User can view formatted output with whitespace and line breaks preserved.
+- [x] **OUTP-02**: User can copy formatted output to the clipboard.
+- [x] **OUTP-03**: User can download formatted output as a `.tex` file.
 - [ ] **OUTP-04**: User can see whether formatting changed the input.
 
 ### Quality
@@ -68,13 +68,13 @@
 
 | Requirement | Phase | Status |
 |-------------|-------|--------|
-| INPT-01 | Phase 1 | Pending |
-| INPT-02 | Phase 1 | Pending |
-| INPT-03 | Phase 1 | Pending |
-| FORM-01 | Phase 1 | Pending |
-| OUTP-01 | Phase 1 | Pending |
-| OUTP-02 | Phase 1 | Pending |
-| OUTP-03 | Phase 1 | Pending |
+| INPT-01 | Phase 1 | Complete |
+| INPT-02 | Phase 1 | Complete |
+| INPT-03 | Phase 1 | Complete |
+| FORM-01 | Phase 1 | Complete |
+| OUTP-01 | Phase 1 | Complete |
+| OUTP-02 | Phase 1 | Complete |
+| OUTP-03 | Phase 1 | Complete |
 | FORM-02 | Phase 2 | Pending |
 | FORM-03 | Phase 2 | Pending |
 | FORM-04 | Phase 3 | Pending |
@@ -85,6 +85,7 @@
 | QUAL-02 | Phase 5 | Pending |
 
 **Coverage:**
+
 - v1 requirements: 15 total
 - Mapped to phases: 15
 - Unmapped: 0
