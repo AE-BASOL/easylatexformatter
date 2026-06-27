@@ -1,5 +1,5 @@
 import { useMemo, useState } from "react";
-import { formatLatexSource } from "./lib/formatter";
+import { formatLatexSource, SOFT_BREAK } from "./lib/formatter";
 
 const sampleLatex = String.raw`\documentclass{article}
 \begin{document}
@@ -93,6 +93,22 @@ export default function App() {
     setStatusKind("idle");
   }
 
+  function handleSoftBreakKeyDown(event: React.KeyboardEvent<HTMLTextAreaElement>) {
+    if (event.key === "Enter" && event.shiftKey) {
+      event.preventDefault();
+      const el = event.currentTarget;
+      const start = el.selectionStart;
+      const end = el.selectionEnd;
+      const before = input.slice(0, start);
+      const after = input.slice(end);
+      const inserted = SOFT_BREAK + "\n";
+      setInput(before + inserted + after);
+      requestAnimationFrame(() => {
+        el.selectionStart = el.selectionEnd = start + inserted.length;
+      });
+    }
+  }
+
   function handleSample() {
     setInput(sampleLatex);
     setOutput("");
@@ -154,8 +170,9 @@ export default function App() {
           className="source-area"
           value={input}
           onChange={(event) => setInput(event.target.value)}
+          onKeyDown={handleSoftBreakKeyDown}
           spellCheck={false}
-          placeholder="Paste LaTeX source here..."
+          placeholder="Paste LaTeX source here… (Shift+Enter = soft break ↵, joined on format)"
           aria-label="LaTeX source input"
         />
       </section>

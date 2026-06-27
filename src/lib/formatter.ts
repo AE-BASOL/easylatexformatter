@@ -1,3 +1,5 @@
+export const SOFT_BREAK = '↵'; // ↵ — Shift+Enter marker
+
 export type FormatOptions = {
   indentSize: number;
   wrapLines: boolean;
@@ -26,7 +28,9 @@ export function formatLatexSource(
   options: Partial<FormatOptions> = {}
 ): FormatResult {
   const settings = { ...DEFAULT_OPTIONS, ...options };
-  const normalized = input.replace(/\r\n?/g, "\n").trim();
+  // Join soft-break lines (Shift+Enter marker ↵ before \n) into single lines
+  const joined = input.replace(new RegExp(SOFT_BREAK + "\\n", "g"), " ");
+  const normalized = joined.replace(/\r\n?/g, "\n").trim();
   const diagnostics = [
     "Best-effort formatter: advanced LaTeX formatting comes later."
   ];
