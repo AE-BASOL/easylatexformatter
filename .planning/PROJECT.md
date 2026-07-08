@@ -14,17 +14,20 @@ User can paste LaTeX source, click format, and copy a cleaner version in one qui
 
 ### Validated
 
-- ✓ User can paste LaTeX source into a single-page interface — Phase 1
-- ✓ User can run a basic deterministic formatter from the interface — Phase 1
-- ✓ User can inspect formatted output before copying it — Phase 1
-- ✓ User can copy or download the formatted result — Phase 1
+- ✓ User can paste LaTeX source into a single-page interface — v1.0
+- ✓ User can run a basic deterministic formatter from the interface — v1.0
+- ✓ User can inspect formatted output before copying it — v1.0
+- ✓ User can copy or download the formatted result — v1.0
+- ✓ User can format source with stronger deterministic LaTeX rules — v1.0
+- ✓ User receives clear feedback when input cannot be formatted safely — v1.0
+- ✓ User can configure basic formatting options — v1.0
+- ✓ Formatter behavior is protected by fixture tests — v1.0
 
 ### Active
 
-- [ ] User can format source with stronger deterministic LaTeX rules.
-- [ ] User receives clear feedback when input cannot be formatted safely.
-- [ ] User can configure basic formatting options.
-- [ ] Formatter behavior is protected by fixture tests.
+- [ ] User can compare input and output in a diff view.
+- [ ] User can use keyboard shortcuts to format and copy.
+- [ ] User can upload a `.tex` file instead of pasting source.
 
 ### Out of Scope
 
@@ -61,10 +64,12 @@ User can paste LaTeX source, click format, and copy a cleaner version in one qui
 
 | Decision | Rationale | Outcome |
 |----------|-----------|---------|
-| Build LaTeX source formatter, not prose-to-LaTeX converter | User chose source formatting as v1 scope | - Pending |
+| Build LaTeX source formatter, not prose-to-LaTeX converter | User chose source formatting as v1 scope | ✓ Good |
 | Use paste-format-copy UI for v1 | Fastest path to the requested workflow | ✓ Good |
-| Use deterministic local formatting | User wants reliable formatting without AI uncertainty | — Pending |
-| Keep AI assistance out of v1 | Avoid cost, latency, semantic drift, and privacy concerns | - Pending |
+| Use deterministic local formatting | User wants reliable formatting without AI uncertainty | ✓ Good |
+| Keep AI assistance out of v1 | Avoid cost, latency, semantic drift, and privacy concerns | ✓ Good |
+| Implement custom RegexFormatterEngine with Adapter pattern | Allows quick iteration while keeping UI decoupled for future AST replacements | ✓ Good |
+| Support "Merge (unwrap)" feature | Fulfills user request to safely repair heavily broken paragraphs | ✓ Good |
 
 ## Evolution
 
@@ -84,4 +89,4 @@ This document evolves at phase transitions and milestone boundaries.
 4. Update Context with current state
 
 ---
-*Last updated: 2026-06-24 after Phase 1 completion*
+*Last updated: 2026-07-08 after v1.0 milestone*
