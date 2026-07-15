@@ -23,6 +23,9 @@ export default function App() {
   ]);
   const [status, setStatus] = useState("Ready");
   const [statusKind, setStatusKind] = useState<StatusKind>("idle");
+  const [indentSize, setIndentSize] = useState<number>(2);
+  const [wrapLines, setWrapLines] = useState<boolean>(false);
+  const [unwrapLines, setUnwrapLines] = useState<boolean>(false);
 
   const hasOutput = output.trim().length > 0;
 
@@ -36,7 +39,7 @@ export default function App() {
   }, [hasOutput, output]);
 
   function handleFormat() {
-    const result = formatLatexSource(input);
+    const result = formatLatexSource(input, { indentSize, wrapLines, unwrapLines });
     setDiagnostics(result.diagnostics);
 
     if (!result.ok) {
@@ -161,6 +164,25 @@ export default function App() {
         </div>
       </section>
 
+      <section className="options-bar" aria-label="Formatting options">
+        <label className="option-label">
+          <span>Indent size:</span>
+          <select value={indentSize} onChange={(e) => setIndentSize(Number(e.target.value))}>
+            <option value={2}>2 spaces</option>
+            <option value={4}>4 spaces</option>
+            <option value={8}>8 spaces</option>
+          </select>
+        </label>
+        <label className="option-label">
+          <input type="checkbox" checked={unwrapLines} onChange={(e) => setUnwrapLines(e.target.checked)} />
+          <span>Merge (unwrap) lines</span>
+        </label>
+        <label className="option-label">
+          <input type="checkbox" checked={wrapLines} onChange={(e) => setWrapLines(e.target.checked)} />
+          <span>Wrap long lines</span>
+        </label>
+      </section>
+
       <section className="panel" aria-labelledby="input-title">
         <div className="panel-header">
           <h2 id="input-title">Input</h2>
@@ -179,7 +201,10 @@ export default function App() {
 
       <section className="panel" aria-labelledby="output-title">
         <div className="panel-header">
-          <h2 id="output-title">Output</h2>
+          <div className="output-header-left">
+            <h2 id="output-title">Output</h2>
+            {hasOutput && <span className={`output-badge badge-${statusKind}`}>{status}</span>}
+          </div>
           <span>{outputMeta}</span>
         </div>
         <pre className="output-area" aria-label="Formatted LaTeX output">
@@ -189,10 +214,18 @@ export default function App() {
 
       <section className="diagnostics" aria-labelledby="diagnostics-title">
         <h2 id="diagnostics-title">Diagnostics</h2>
-        <ul>
-          {diagnostics.map((diagnostic) => (
-            <li key={diagnostic}>{diagnostic}</li>
-          ))}
+        <ul className="diagnostics-list">
+          {diagnostics.map((diagnostic) => {
+            const isWarning = diagnostic.toLowerCase().includes("warning");
+            const isError = diagnostic.toLowerCase().includes("error") || diagnostic.toLowerCase().includes("fail");
+            const isSuccess = diagnostic.toLowerCase().includes("formatted with");
+            const liClass = isError ? "diag-error" : isWarning ? "diag-warning" : isSuccess ? "diag-success" : "";
+            return (
+              <li key={diagnostic} className={liClass}>
+                {diagnostic}
+              </li>
+            );
+          })}
         </ul>
       </section>
     </main>
